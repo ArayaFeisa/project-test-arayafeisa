@@ -9,6 +9,7 @@ function router() {
 
   setTimeout(() => {
     Header.highlightActiveLink();
+    Header.handleMenuToggle();
   });
 }
 

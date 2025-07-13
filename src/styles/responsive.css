@@ -1,16 +1,4 @@
 @media (max-width: 768px) {
-  .header .container {
-    flex-direction: column;
-    height: auto;
-    padding: 10px 0;
-    gap: 10px;
-  }
-
-  .header nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
 
   .banner {
     height: 250px;

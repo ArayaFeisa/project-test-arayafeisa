@@ -8,7 +8,10 @@ const Header = {
           <div class="logo">
             <img src="${suitmediaLogo}" alt="Suitmedia Logo" height="40">
           </div>
-          <nav>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            ☰
+          </button>
+          <nav class="nav-menu" id="nav-menu">
             <ul>
               <li><a href="#/work">Work</a></li>
               <li><a href="#/about">About</a></li>
@@ -30,28 +33,38 @@ const Header = {
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset;
       if (prevScrollPos > currentScrollPos) {
-        header.style.top = "0";
-        header.style.background = "rgba(234, 96, 36, 0.5)";
+        header.style.top = '0';
+        header.style.background = 'rgba(234, 96, 36, 0.5)';
       } else {
-        header.style.top = "-100px";
+        header.style.top = '-100px';
       }
       prevScrollPos = currentScrollPos;
     });
   },
 
   highlightActiveLink() {
-  const links = document.querySelectorAll('.header nav a');
-  const currentHash = window.location.hash || '#/';
-  
-  links.forEach(link => {
-    if (link.getAttribute('href') === currentHash) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-}
+    const links = document.querySelectorAll('.header nav a');
+    const currentHash = window.location.hash || '#/';
 
-}
+    links.forEach(link => {
+      if (link.getAttribute('href') === currentHash) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  },
+
+  handleMenuToggle() {
+    const toggleButton = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (toggleButton && navMenu) {
+      toggleButton.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+    }
+  }
+};
 
 export default Header;
