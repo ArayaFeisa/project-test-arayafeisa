@@ -49,7 +49,6 @@
   font-weight: bold;
 }
 
-/* --- Responsive Menu --- */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
