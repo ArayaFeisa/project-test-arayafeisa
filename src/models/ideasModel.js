@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_BASE_URL = '/api/api/ideas';
+import apiClient from '../utils/api';
 
 const IdeasModel = {
   async fetchIdeas(pageNumber = 1, pageSize = 10, sort = '-published_at') {
@@ -11,7 +9,7 @@ const IdeasModel = {
       'sort': sort,
     };
 
-    const response = await axios.get(API_BASE_URL, { params });
+    const response = await apiClient.get('/ideas', { params });
     return response.data;
   }
 }

@@ -1,5 +1,5 @@
 import IdeasModel from '../models/ideasModel';
-import IdeasPage from '../pages/IdeasPage';
+import IdeasPage from '../pages/ideasPage';
 
 const IdeasPresenter = {
   async init(pageNumber, pageSize, sort) {
