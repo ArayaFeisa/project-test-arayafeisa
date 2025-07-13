@@ -1,0 +1,20 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 30px 0 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.controls label {
+  margin-left: 10px;
+  font-size: 0.95rem;
+}
+
+.controls select {
+  margin-left: 5px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
