@@ -27,20 +27,28 @@ const Header = {
   },
 
   handleScroll() {
-    let prevScrollPos = window.pageYOffset;
-    const header = document.getElementById('header');
+  let prevScrollPos = window.pageYOffset;
+  const header = document.getElementById('header');
+  const navMenu = document.getElementById('nav-menu');
+  const toggleButton = document.getElementById('menu-toggle');
 
-    window.addEventListener('scroll', () => {
-      const currentScrollPos = window.pageYOffset;
-      if (prevScrollPos > currentScrollPos) {
-        header.style.top = '0';
-        header.style.background = 'rgba(234, 96, 36, 0.5)';
-      } else {
-        header.style.top = '-100px';
-      }
-      prevScrollPos = currentScrollPos;
-    });
-  },
+  window.addEventListener('scroll', () => {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+      header.style.top = '0';
+      header.style.background = 'rgba(234, 96, 36, 0.5)';
+    } else {
+      header.style.top = '-100px';
+    }
+
+    if (navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+    }
+
+    prevScrollPos = currentScrollPos;
+  });
+},
 
   highlightActiveLink() {
     const links = document.querySelectorAll('.header nav a');
