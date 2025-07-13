@@ -16,13 +16,13 @@
 }
 
 .pagination button:hover {
-  background: orange;
+  background: #ef6529;
   color: white;
-  border-color: orange;
+  border-color: #ef6529;
 }
 
 .pagination button.active {
-  background: orange;
+  background: #ef6529;
   color: white;
-  border-color: orange;
+  border-color: #ef6529;
 }

@@ -45,23 +45,58 @@ const IdeasPage = {
   },
 
   renderPagination(total, perPage, currentPage) {
-    const pagination = document.getElementById('pagination');
-    const totalPages = Math.ceil(total / perPage);
-    let html = '';
-    for (let i = 1; i <= totalPages; i++) {
-      html += `<button class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
-    }
-    pagination.innerHTML = html;
+  const pagination = document.getElementById('pagination');
+  const totalPages = Math.ceil(total / perPage);
+  let html = '';
 
-    pagination.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const page = e.target.dataset.page;
-        const sort = document.getElementById('sortBy').value;
-        const perPage = document.getElementById('showPerPage').value;
-        IdeasPresenter.init(Number(page), Number(perPage), sort);
-      });
+  // tombol halaman pertama
+  if (currentPage !== 1) {
+    html += `<button data-page="1" title="First Page">1</button>`;
+  }
+
+  // Tombol back 2 halaman (<<)
+  html += `<button data-page="${Math.max(1, currentPage - 2)}" 
+  ${currentPage <= 2 ? 'disabled' : ''} title="Back 2 Pages">&laquo;</button>`;
+
+  // Tombol back 1 halaman (<)
+  html += `<button data-page="${Math.max(1, currentPage - 1)}" 
+  ${currentPage === 1 ? 'disabled' : ''} title="Back 1 Page">&lsaquo;</button>`;
+
+  // 3 halaman di tengah
+  let startPage = Math.max(1, currentPage - 1);
+  let endPage = Math.min(totalPages, startPage + 2);
+  if (endPage - startPage < 2) {
+    startPage = Math.max(1, endPage - 2);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    html += `<button class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+  }
+
+  // Tombol skip 1 halaman (>)
+  html += `<button data-page="${Math.min(totalPages, currentPage + 1)}" 
+  ${currentPage === totalPages ? 'disabled' : ''} title="Next Page">&rsaquo;</button>`;
+
+  // Tombol skip 2 halaman (>>)
+  html += `<button data-page="${Math.min(totalPages, currentPage + 2)}" 
+  ${currentPage >= totalPages - 1 ? 'disabled' : ''} title="Skip 2 Pages">&raquo;</button>`;
+
+  // tombol halaman terakhir
+  if (currentPage !== totalPages) {
+    html += `<button data-page="${totalPages}" title="Last Page">${totalPages}</button>`;
+  }
+
+  pagination.innerHTML = html;
+
+  pagination.querySelectorAll('button:not(:disabled)').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const page = Number(e.target.dataset.page);
+      const sort = document.getElementById('sortBy').value;
+      const perPage = Number(document.getElementById('showPerPage').value);
+      IdeasPresenter.init(page, perPage, sort);
     });
-  },
+  });
+},
 
   initControls() {
     document.getElementById('showPerPage').addEventListener('change', (e) => {

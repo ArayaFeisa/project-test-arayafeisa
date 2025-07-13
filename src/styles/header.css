@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   transition: top 0.3s, background 0.3s;
-  background: rgba(255, 255, 255, 0.95);
+  background: #ef6529;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 999;
 }
@@ -15,10 +15,8 @@
   height: 60px;
 }
 
-.header .logo {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: orange;
+.header .logo img {
+  height: 40px;
 }
 
 .header nav ul {
@@ -30,12 +28,12 @@
 }
 
 .header nav ul li a {
-  color: #333;
+  color: white;
   padding-bottom: 4px;
+  transition: border-bottom 0.3s;
 }
 
 .header nav ul li a.active {
-  border-bottom: 2px solid orange;
-  color: orange;
+  border-bottom: 2px solid white;
   font-weight: bold;
 }
