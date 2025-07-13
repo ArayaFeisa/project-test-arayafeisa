@@ -1,14 +1,21 @@
+import fallbackImage from '../assets/images/no-image.jpg';
+
 const Card = {
   render(item) {
     const publishedDate = new Date(item.published_at).toLocaleDateString('id-ID', {
       day: 'numeric', month: 'long', year: 'numeric'
     });
 
-    const imageUrl = item.small_image?.[0]?.url || 'https://via.placeholder.com/300x200?text=No+Image';
+    const imageUrl = item.small_image?.[0]?.url;
 
     return `
       <div class="card">
-        <img src="${imageUrl}" alt="${item.title}" loading="lazy" />
+        <img 
+          src="${imageUrl || fallbackImage}" 
+          alt="${item.title}" 
+          loading="lazy"
+          onerror="this.onerror=null;this.src='${fallbackImage}';"
+        />
         <p>${publishedDate}</p>
         <h3>${item.title}</h3>
       </div>
