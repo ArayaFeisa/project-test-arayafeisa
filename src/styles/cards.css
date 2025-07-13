@@ -6,10 +6,12 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
 }
 
@@ -18,9 +20,12 @@
 }
 
 .card img {
+  display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  background-color: #f0f0f0;
 }
 
 .card p {

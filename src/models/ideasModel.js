@@ -12,6 +12,6 @@ const IdeasModel = {
     const response = await apiClient.get('/ideas', { params });
     return response.data;
   }
-}
+};
 
 export default IdeasModel;

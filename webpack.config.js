@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development', // Hindari warning fallback ke production
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -9,12 +10,24 @@ module.exports = {
     clean: true
   },
   devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    port: 8080,
+    compress: true,
     proxy: {
       '/api': {
         target: 'https://suitmedia-backend.suitdev.com',
         changeOrigin: true,
-        pathRewrite: { '^/api': '' },
+        secure: false,
+        pathRewrite: { '^/api': '/api' },
       },
+
+      '/storage': {
+        target: 'https://assets.suitdev.com',
+        changeOrigin: true,
+        secure: false,
+      }
     },
   },
   module: {
@@ -29,7 +42,7 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource'
       }
     ]
@@ -39,4 +52,4 @@ module.exports = {
       template: './public/index.html'
     })
   ]
-}
+};

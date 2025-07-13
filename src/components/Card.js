@@ -4,14 +4,16 @@ const Card = {
       day: 'numeric', month: 'long', year: 'numeric'
     });
 
+    const imageUrl = item.small_image?.[0]?.url || 'https://via.placeholder.com/300x200?text=No+Image';
+
     return `
       <div class="card">
-        <img src="${item.small_image}" alt="${item.title}" loading="lazy" />
+        <img src="${imageUrl}" alt="${item.title}" loading="lazy" />
         <p>${publishedDate}</p>
         <h3>${item.title}</h3>
       </div>
     `;
   }
-}
+};
 
 export default Card;
