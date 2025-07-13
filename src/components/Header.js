@@ -1,4 +1,4 @@
-import suitmediaLogo from '../assets/images/suitmedia_logo.png';
+import suitmediaLogo from "../assets/images/suitmedia_logo.png";
 
 const Header = {
   render() {
@@ -27,52 +27,52 @@ const Header = {
   },
 
   handleScroll() {
-  let prevScrollPos = window.pageYOffset;
-  const header = document.getElementById('header');
-  const navMenu = document.getElementById('nav-menu');
-  const toggleButton = document.getElementById('menu-toggle');
+    let prevScrollPos = window.pageYOffset;
+    const header = document.getElementById("header");
+    const navMenu = document.getElementById("nav-menu");
+    const toggleButton = document.getElementById("menu-toggle");
 
-  window.addEventListener('scroll', () => {
-    const currentScrollPos = window.pageYOffset;
+    window.addEventListener("scroll", () => {
+      const currentScrollPos = window.pageYOffset;
 
-    if (prevScrollPos > currentScrollPos) {
-      header.style.top = '0';
-      header.style.background = 'rgba(234, 96, 36, 0.5)';
-    } else {
-      header.style.top = '-100px';
-    }
+      if (prevScrollPos > currentScrollPos) {
+        header.style.top = "0";
+        header.style.background = "rgba(234, 96, 36, 0.5)";
+      } else {
+        header.style.top = "-100px";
+      }
 
-    if (navMenu.classList.contains('open')) {
-      navMenu.classList.remove('open');
-    }
+      if (navMenu.classList.contains("open")) {
+        navMenu.classList.remove("open");
+      }
 
-    prevScrollPos = currentScrollPos;
-  });
-},
+      prevScrollPos = currentScrollPos;
+    });
+  },
 
   highlightActiveLink() {
-    const links = document.querySelectorAll('.header nav a');
-    const currentHash = window.location.hash || '#/';
+    const links = document.querySelectorAll(".header nav a");
+    const currentHash = window.location.hash || "#/";
 
-    links.forEach(link => {
-      if (link.getAttribute('href') === currentHash) {
-        link.classList.add('active');
+    links.forEach((link) => {
+      if (link.getAttribute("href") === currentHash) {
+        link.classList.add("active");
       } else {
-        link.classList.remove('active');
+        link.classList.remove("active");
       }
     });
   },
 
   handleMenuToggle() {
-    const toggleButton = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    const toggleButton = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
 
     if (toggleButton && navMenu) {
-      toggleButton.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
+      toggleButton.addEventListener("click", () => {
+        navMenu.classList.toggle("open");
       });
     }
-  }
+  },
 };
 
 export default Header;

@@ -1,10 +1,15 @@
-import fallbackImage from '../assets/images/no-image.jpg';
+import fallbackImage from "../assets/images/no-image.jpg";
 
 const Card = {
   render(item) {
-    const publishedDate = new Date(item.published_at).toLocaleDateString('id-ID', {
-      day: 'numeric', month: 'long', year: 'numeric'
-    });
+    const publishedDate = new Date(item.published_at).toLocaleDateString(
+      "id-ID",
+      {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      },
+    );
 
     const imageUrl = item.small_image?.[0]?.url;
 
@@ -20,7 +25,7 @@ const Card = {
         <h3>${item.title}</h3>
       </div>
     `;
-  }
+  },
 };
 
 export default Card;

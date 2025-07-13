@@ -2,7 +2,7 @@ import Header from "../components/Header";
 
 const AboutPage = {
   render() {
-    document.getElementById('app').innerHTML = `
+    document.getElementById("app").innerHTML = `
       ${Header.render()}
       <section class="container">
         <h1>Work</h1>
@@ -11,7 +11,7 @@ const AboutPage = {
     `;
 
     Header.handleScroll();
-  }
+  },
 };
 
 export default AboutPage;

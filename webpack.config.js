@@ -1,33 +1,33 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
+  mode: "development",
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    clean: true
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    clean: true,
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: path.join(__dirname, "public"),
     },
     port: 8080,
     compress: true,
     proxy: {
-      '/api': {
-        target: 'https://suitmedia-backend.suitdev.com',
+      "/api": {
+        target: "https://suitmedia-backend.suitdev.com",
         changeOrigin: true,
         secure: false,
-        pathRewrite: { '^/api': '/api' },
+        pathRewrite: { "^/api": "/api" },
       },
 
-      '/storage': {
-        target: 'https://assets.suitdev.com',
+      "/storage": {
+        target: "https://assets.suitdev.com",
         changeOrigin: true,
         secure: false,
-      }
+      },
     },
   },
   module: {
@@ -35,21 +35,21 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ["babel-loader"],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        type: 'asset/resource'
-      }
-    ]
+        type: "asset/resource",
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };

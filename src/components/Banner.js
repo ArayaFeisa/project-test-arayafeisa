@@ -11,12 +11,12 @@ const Banner = {
   },
 
   handleParallax() {
-    const banner = document.querySelector('.banner');
-    window.addEventListener('scroll', () => {
+    const banner = document.querySelector(".banner");
+    window.addEventListener("scroll", () => {
       let offset = window.pageYOffset;
-      banner.style.backgroundPositionY = offset * 0.5 + 'px';
+      banner.style.backgroundPositionY = offset * 0.5 + "px";
     });
-  }
-}
+  },
+};
 
 export default Banner;

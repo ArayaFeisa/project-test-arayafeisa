@@ -1,10 +1,10 @@
-import './styles/main.css';
-import routes from './utils/routes';
-import Header from './components/Header';
+import "./styles/main.css";
+import routes from "./utils/routes";
+import Header from "./components/Header";
 
 function router() {
-  const hash = window.location.hash || '#/';
-  const page = routes[hash] || routes['#/'];
+  const hash = window.location.hash || "#/";
+  const page = routes[hash] || routes["#/"];
   page.render();
 
   setTimeout(() => {
@@ -13,5 +13,5 @@ function router() {
   });
 }
 
-window.addEventListener('hashchange', router);
-window.addEventListener('DOMContentLoaded', router);
+window.addEventListener("hashchange", router);
+window.addEventListener("DOMContentLoaded", router);

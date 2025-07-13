@@ -1,13 +1,13 @@
-@import './header.css';
-@import './banner.css';
-@import './controls.css';
-@import './cards.css';
-@import './pagination.css';
-@import './responsive.css';
+@import "./header.css";
+@import "./banner.css";
+@import "./controls.css";
+@import "./cards.css";
+@import "./pagination.css";
+@import "./responsive.css";
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #fff;
   color: #333;
 }
