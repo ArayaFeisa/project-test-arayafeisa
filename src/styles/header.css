@@ -39,7 +39,8 @@
 
 .header nav ul li a {
   color: white;
-  padding-bottom: 4px;
+  padding: 8px 12px;
+  display: block;
   transition: border-bottom 0.3s;
 }
 
