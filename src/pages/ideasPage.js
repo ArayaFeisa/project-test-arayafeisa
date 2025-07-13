@@ -38,7 +38,6 @@ const IdeasPage = {
   Header.handleScroll();
   Banner.handleParallax();
 
-  // Atur nilai dropdown agar sesuai state yang tersimpan
   document.getElementById('showPerPage').value = size;
   document.getElementById('sortBy').value = sort;
 
