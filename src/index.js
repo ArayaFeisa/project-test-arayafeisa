@@ -1,6 +1,16 @@
 import './styles/main.css';
-import IdeasPage from './pages/ideasPage';
+import routes from './utils/routes';
+import Header from './components/Header';
 
-document.addEventListener('DOMContentLoaded', () => {
-  IdeasPage.render();
-});
+function router() {
+  const hash = window.location.hash || '#/';
+  const page = routes[hash] || routes['#/'];
+  page.render();
+
+  setTimeout(() => {
+    Header.highlightActiveLink();
+  });
+}
+
+window.addEventListener('hashchange', router);
+window.addEventListener('DOMContentLoaded', router);

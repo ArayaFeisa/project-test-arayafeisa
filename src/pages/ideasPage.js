@@ -5,37 +5,47 @@ import Card from '../components/Card';
 
 const IdeasPage = {
   render() {
-    document.getElementById('app').innerHTML = `
-      ${Header.render()}
-      ${Banner.render()}
-      <section class="controls">
-        <div>Showing <span id="range-info"></span></div>
-        <div>
-          <label>Show per page:
-            <select id="showPerPage">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-            </select>
-          </label>
-          <label>Sort by:
-            <select id="sortBy">
-              <option value="-published_at">Newest</option>
-              <option value="published_at">Oldest</option>
-            </select>
-          </label>
-        </div>
-      </section>
-      <section class="cards-container" id="ideas-list"></section>
-      <div class="pagination" id="pagination"></div>
-    `;
+  const saved = JSON.parse(localStorage.getItem('ideasState')) || {};
+  const page = saved.pageNumber || 1;
+  const size = saved.pageSize || 10;
+  const sort = saved.sort || '-published_at';
 
-    Header.handleScroll();
-    Banner.handleParallax();
+  document.getElementById('app').innerHTML = `
+    ${Header.render()}
+    ${Banner.render()}
+    <section class="controls">
+      <div>Showing <span id="range-info"></span></div>
+      <div>
+        <label>Show per page:
+          <select id="showPerPage">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+        <label>Sort by:
+          <select id="sortBy">
+            <option value="-published_at">Newest</option>
+            <option value="published_at">Oldest</option>
+          </select>
+        </label>
+      </div>
+    </section>
+    <section class="cards-container" id="ideas-list"></section>
+    <div class="pagination" id="pagination"></div>
+  `;
 
-    this.initControls();
-    IdeasPresenter.init(1, 10, '-published_at');
-  },
+  Header.handleScroll();
+  Banner.handleParallax();
+
+  // Atur nilai dropdown agar sesuai state yang tersimpan
+  document.getElementById('showPerPage').value = size;
+  document.getElementById('sortBy').value = sort;
+
+  this.initControls();
+  IdeasPresenter.init(page, size, sort);
+},
+
 
   showIdeas(data) {
     const listContainer = document.getElementById('ideas-list');

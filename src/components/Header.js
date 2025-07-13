@@ -10,12 +10,12 @@ const Header = {
           </div>
           <nav>
             <ul>
-              <li><a href="#" class="active">Work</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Ideas</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#/work">Work</a></li>
+              <li><a href="#/about">About</a></li>
+              <li><a href="#/services">Services</a></li>
+              <li><a href="#/">Ideas</a></li>
+              <li><a href="#/career">Careers</a></li>
+              <li><a href="#/contact">Contact</a></li>
             </ul>
           </nav>
         </div>
@@ -37,7 +37,21 @@ const Header = {
       }
       prevScrollPos = currentScrollPos;
     });
-  }
+  },
+
+  highlightActiveLink() {
+  const links = document.querySelectorAll('.header nav a');
+  const currentHash = window.location.hash || '#/';
+  
+  links.forEach(link => {
+    if (link.getAttribute('href') === currentHash) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
 }
 
 export default Header;
